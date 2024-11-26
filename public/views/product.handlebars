@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+</head>
+<body>
+    <h1>Productos</h1>
+    {{#each products}}
+    <div class="product">
+        <h2>{{this.name}}</h2>
+        <p>{{this.description}}</p>
+        <p>Precio: ${{this.price}}</p>
+        <form action="/api/cart" method="POST">
+            <input type="hidden" name="productId" value="{{this._id}}">
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+            <button type="submit">Agregar al Carrito</button>
+        </form>
+    </div>
+    {{/each}}
+</body>
+</html>
